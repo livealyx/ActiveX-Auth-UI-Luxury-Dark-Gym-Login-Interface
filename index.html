@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ActiveX Gym - Login</title>
+    <!-- Google Fonts: Outfit for modern, bold look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Left Panel: Authentication Form -->
+        <div class="auth-panel">
+            <div class="brand-logo">
+                <i class="fa-solid fa-dumbbell"></i> <span>ActiveX Gym</span>
+            </div>
+            
+            <div class="auth-card">
+                <header class="auth-header">
+                    <h1>Hey, Welcome Back! 👋</h1>
+                    <p>Please enter your details</p>
+                </header>
+
+                <form id="loginForm" class="auth-form">
+                    <div class="input-group">
+                        <input type="email" id="email" required placeholder=" " autocomplete="off">
+                        <label for="email">Email</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" id="password" required placeholder=" " autocomplete="off">
+                        <label for="password">Password</label>
+                    </div>
+
+                    <div class="form-actions">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="remember">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-link">Forgot password</a>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Login</button>
+                    
+                    <button type="button" class="btn-google">
+                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google Logo">
+                        Login with Google
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="#">Sign up here</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel: Cinematic Slider -->
+        <div class="slider-panel">
+            <div class="slider-container" id="slider">
+                <!-- Slides will be injected by JS -->
+            </div>
+            
+            <div class="slider-overlay">
+                <div class="slider-content">
+                    <p id="slider-caption" class="fade-in">Train Harder, Go Further.</p>
+                    <div class="slider-controls">
+                        <div class="pagination" id="pagination"></div>
+                        <div class="nav-arrows">
+                            <button id="prevBtn" class="arrow-btn"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button id="nextBtn" class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

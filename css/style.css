@@ -1,0 +1,408 @@
+:root {
+    --bg-body: #e6e6e6;
+    --bg-card: #050505;
+    --bg-card-gradient: linear-gradient(145deg, #0a0a0a, #000000);
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent-color: #ffffff; /* White primary button */
+    --input-bg: #1a1a1a;
+    --input-focus-border: #4a4a4a;
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --font-main: 'Outfit', sans-serif;
+    --border-radius: 32px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-body);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--text-primary);
+}
+
+/* Main Modal/Card Container */
+.main-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 800px; /* Fixed height for the desktop look */
+    background: var(--bg-card);
+    background: var(--bg-card-gradient);
+    border-radius: var(--border-radius);
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    position: relative;
+    border: 1px solid var(--glass-border);
+}
+
+/* Left Panel - Auth */
+.auth-panel {
+    flex: 1;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    opacity: 0.9;
+}
+
+.brand-logo i {
+    font-size: 1.5rem;
+    color: #888; /* Subtle icon color */
+}
+
+/* Auth Card (Inner Content) */
+.auth-card {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto; /* Center horizontally in the left panel */
+}
+
+.auth-header {
+    margin-bottom: 40px;
+}
+
+.auth-header h1 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.auth-header p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Form Styles */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 18px 20px;
+    background: var(--input-bg);
+    border: 1px solid transparent;
+    border-radius: 16px;
+    color: white;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: var(--input-focus-border);
+    background: #222;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
+}
+
+/* Floating Label Logic */
+.input-group label {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none;
+    transition: 0.3s ease;
+    font-size: 1rem;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: 0px;
+    left: 15px;
+    font-size: 0.8rem;
+    color: #fff;
+    background: var(--bg-card); /* Mask the line behind */
+    padding: 0 5px;
+    border-radius: 4px;
+}
+/* Adjust for background color consistency if needed, strictly simpler: */
+/* Alternative simplified floating label: moving it UP inside the padding? 
+   Let's stick to standard floating label behavior but ensure contrast. 
+   With rounded inputs, top: 12px or so might look better */
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.custom-checkbox input {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #444;
+    border-radius: 4px;
+    margin-right: 8px;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.custom-checkbox input:checked + .checkmark {
+    background: white;
+    border-color: white;
+}
+
+.custom-checkbox input:checked + .checkmark::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 4px;
+    height: 9px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.forgot-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+    border-bottom: 1px solid transparent;
+}
+
+.forgot-link:hover {
+    color: white;
+    border-color: white;
+}
+
+/* Buttons */
+.btn-primary {
+    width: 100%;
+    padding: 16px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+}
+
+.btn-google {
+    width: 100%;
+    padding: 16px;
+    background: transparent;
+    border: 1px solid #333;
+    color: white;
+    border-radius: 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.2s;
+}
+
+.btn-google:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #555;
+}
+
+.btn-google img {
+    width: 20px;
+    height: 20px;
+}
+
+.auth-footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.auth-footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Right Panel - Slider */
+.slider-panel {
+    flex: 1.2; /* Slightly wider than auth */
+    position: relative;
+    padding: 20px;
+    display: flex; /* To contain the inner rounded div if needed */
+}
+
+.slider-container {
+    width: 100%;
+    height: 100%;
+    background: #111;
+    border-radius: 24px; /* Inner radius slightly smaller than main */
+    overflow: hidden;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    filter: grayscale(100%); /* B&W cinematic look */
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Slider Overlay */
+.slider-overlay {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    right: 40px;
+    z-index: 10;
+    color: white;
+    pointer-events: none; /* Let clicks pass through if needed */
+}
+
+.slider-content {
+    pointer-events: auto;
+}
+
+#slider-caption {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    max-width: 80%;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.slider-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pagination {
+    display: flex;
+    gap: 5px;
+}
+
+.dot {
+    width: 40px;
+    height: 3px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 2px;
+    transition: background 0.3s;
+}
+
+.dot.active {
+    background: white;
+}
+
+.nav-arrows {
+    display: flex;
+    gap: 10px;
+}
+
+.arrow-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    body {
+        padding: 0;
+        background: var(--bg-card); /* Full black on mobile */
+    }
+    
+    .main-container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        border-radius: 0;
+        border: none;
+    }
+
+    .auth-panel {
+        padding: 40px 20px;
+        flex: none;
+    }
+
+    .slider-panel {
+        display: none; /* Hide slider on mobile to focus on login */
+    }
+}
